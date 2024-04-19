@@ -4,15 +4,8 @@
 #
 # Usage:
 #
-#    ./makedebpkg VERSION
+#    ./makedebpkg
 #
-
-if test $# != 1; then
-    echo "Usage: ./makedebpkg VERSION"
-    exit 1
-fi
-
-version=$1
 
 # Create a source sub-directory
 echo "Creating debian-source..."
