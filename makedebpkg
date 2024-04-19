@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Make a Debian package.
+#
+# Usage:
+#
+#    ./makedebpkg VERSION
+#
+
+if test $# != 1; then
+    echo "Usage: ./makedebpkg VERSION"
+    exit 1
+fi
+
+version=$1
+
+# Create a source sub-directory
+echo "Creating debian-source..."
+rm -rf debian-source
+mkdir debian-source
+for file in config.guess config.sub configure debian install-sh Makefile.in *.[ch] rollo-x1038.ppd; do
+    ln -s ../$file debian-source
+done
+
+# Run dpkg-buildpackage to build the package...
+echo "Building Debian package..."
+dpkg-buildpackage -uc -us -ui 

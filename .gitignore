@@ -10,5 +10,6 @@
 /debian/debhelper-build-stamp
 /debian/files
 /debian/rollo-cups-driver*
+/debian-source
 /rastertorollo
-/rollo-cups-driver_*.orig
+/rollo-cups-driver_*
