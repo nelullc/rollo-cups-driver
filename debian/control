@@ -2,12 +2,11 @@ Source: rollo-cups-driver
 Maintainer: Michael Sweet <msweet@lakesiderobotics.ca>
 Section: misc
 Priority: optional
-Standards-Version: 4.6.2
+Standards-Version: 4.6.0.1
 Build-Depends: debhelper-compat (= 13), libcups2-dev, libcupsimage2-dev
 
 Package: rollo-cups-driver
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libcups2, libcupsimage2
-Description: A CUPS printer driver for the Rollo X1038 label printer.
-
-
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Rollo X1038 label printer driver
+    A CUPS printer driver for the Rollo X1038 label printer.
