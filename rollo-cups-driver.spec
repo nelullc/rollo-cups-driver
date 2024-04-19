@@ -11,8 +11,8 @@ Summary: Rollo CUPS Driver
 Name: rollo-cups-driver
 Version: 1.8.3
 Release: 0
-License: GPL
-Group: System Environment/Daemons
+License: GPLv3
+Group: System Environment/Drivers
 Source: https://github.com/nelullc/rollo-cups-driver/releases/download/v%{version}/rollo-cups-driver-%{version}.tar.gz
 Url: https://github.com/nelullc/rollo-cups-driver
 Packager: Rollo Support <support@rollo.com>
@@ -52,3 +52,6 @@ rm -rf $RPM_BUILD_ROOT
 /usr/lib/cups/filter/*
 %dir /usr/share/cups/model
 /usr/share/cups/model/*
+
+%changelog
+
