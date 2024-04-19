@@ -11,7 +11,8 @@
 echo "Creating debian-source..."
 rm -rf debian-source
 mkdir debian-source
-for file in config.guess config.sub configure debian install-sh Makefile.in *.[ch] rollo-x1038.ppd; do
+cp config.guess config.sub configure debian-source
+for file in debian install-sh Makefile.in *.[ch] rollo-x1038.ppd; do
     ln -s ../$file debian-source
 done
 
