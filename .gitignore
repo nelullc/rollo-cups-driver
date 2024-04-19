@@ -1,0 +1,6 @@
+*.dmg
+*.pkg
+/autom4te.cache
+/rastertorollo
+/Rollo-Mac*.dmg
+/Rollo-Mac.dmgbuild

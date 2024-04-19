@@ -1,0 +1,114 @@
+#
+# Makefile for Rollo CUPS printer driver
+#
+# Copyright © 2020-2024 by Nelu LLC.
+#
+# This program is free software.  Distribution and use rights are outlined in
+# the file "COPYING".
+#
+
+
+# POSIX makefile...
+.POSIX:
+
+
+# Version number
+ROLLO_VERSION	=	@ROLLO_VERSION@
+
+
+# Programs and options...
+CC		=	@CC@
+CFLAGS		=	@CFLAGS@ $(CPPFLAGS) $(OPTIM) $(WARNINGS)
+CPPFLAGS	=	@CPPFLAGS@
+INSTALL		=	@INSTALL@
+LDFLAGS		=	@LDFLAGS@ $(OPTIM)
+LIBS		=	@LIBS@
+OPTIM		=	@OPTIM@
+RM		=	@RM@ -f
+SHELL		=	/bin/sh
+WARNINGS	=	@WARNINGS@
+
+
+# Directories...
+CUPS_DATADIR	=	@CUPS_DATADIR@
+CUPS_SERVERBIN	=	@CUPS_SERVERBIN@
+
+BUILDROOT       =       $(DSTROOT)$(RPM_BUILD_ROOT)$(DESTDIR)
+
+
+# Rules...
+.SILENT:
+.SUFFIXES: .c .h .o
+.c.o:
+	echo Compiling $<...
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+
+# Targets...
+OBJS	=	\
+		rastertorollo.o \
+		rollo-dither.o
+TARGETS	=	\
+		rastertorollo
+
+
+# Resource files...
+PPDS	 =	\
+		rollo-x1038.ppd
+
+
+# Make everything...
+all:		$(TARGETS)
+
+
+# Clean everything...
+clean:
+	echo Removing generated files...
+	$(RM) $(OBJS) $(TARGETS) clang.log cppcheck.log
+
+
+# Really clean everything
+distclean:	clean
+	$(RM) config.status config.log Makefile
+
+
+# Update dependencies...
+depend:
+
+
+# Install everything...
+install:	$(TARGETS)
+	echo Creating $(BUILDROOT)$(CUPS_SERVERBIN)/filter...
+	$(INSTALL) -d -m 755 $(BUILDROOT)$(CUPS_SERVERBIN)/filter
+	$(INSTALL) -c -m 755 rastertorollo $(BUILDROOT)$(CUPS_SERVERBIN)/filter
+	echo Creating $(BUILDROOT)$(CUPS_DATADIR)/model...
+	$(INSTALL) -d -m 755 $(BUILDROOT)$(CUPS_DATADIR)/model
+	for file in $(PPDS); do \
+		$(INSTALL) -c -m 644 $$file $(BUILDROOT)$(CUPS_DATADIR)/model; \
+	done
+
+
+# rastertorollo
+rastertorollo:	$(OBJS)
+	echo Linking $@...
+	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+
+
+# Scan code with the Clang static analyzer <https://clang-analyzer.llvm.org>
+clang:
+	echo "clang $(CPPFLAGS) --analyze ..."
+	clang $(CPPFLAGS) --analyze $(OBJS:.o=.c) 2>clang.log
+	rm -rf $(OBJS:.o=.plist)
+	@test -s clang.log && (echo ""; echo "Errors detected:"; echo ""; cat clang.log; exit 1) || exit 0
+
+
+# Scan code with Cppcheck <http://cppcheck.sourceforge.net>
+cppcheck:
+	echo "cppcheck $(CPPFLAGS) --template=gcc --addon=cert.py --suppress=cert-MSC24-C --suppress=cert-EXP05-C --suppress=cert-API01-C ... 2>cppcheck.log"
+	cppcheck $(CPPFLAGS) --template=gcc --addon=cert.py --suppress=cert-MSC24-C --suppress=cert-EXP05-C --suppress=cert-API01-C $(OBJS:.o=.c) 2>cppcheck.log
+	@test -s cppcheck.log && (echo ""; echo "Errors detected:"; echo ""; cat cppcheck.log; exit 1) || exit 0
+
+
+# Dependencies
+$(OBJS): Makefile rollo-dither.h
+$(TARGETS): Makefile

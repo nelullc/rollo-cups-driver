@@ -1,0 +1,338 @@
+*PPD-Adobe: "4.3"
+*% Rollo X1038 label printer driver
+*% Copyright © 2018-2024 by Nelu LLC.
+*%
+*% This program is free software.  Distribution and use rights are outlined in
+*% the file "COPYING".
+*FormatVersion: "4.3"
+*FileVersion: "1.8.3"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "rollo-x1038.ppd"
+*Manufacturer: "Rollo"
+*Product: "(Rollo Thermal Printer)"
+*ModelName: "Rollo Thermal Printer"
+*ShortNickName: "Rollo Thermal Printer"
+*NickName: "Rollo Thermal Printer"
+*PSVersion: "(3010.000) 800"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "60"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*1284DeviceID: "MFG:Printer;CMD:XPP,XL;MDL:ThermalPrinter;"
+
+*% CUPS-specific stuff
+*cupsVersion: 1.6
+*cupsManualCopies: True
+*cupsFilter: "application/vnd.cups-raster 0 rastertorollo"
+
+*% Media sizes
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: 4x6
+*PageSize 4x6/4 x 6": "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageSize 4x8/4 x 8": "<</PageSize[288 576]/ImagingBBox null>>setpagedevice"
+*PageSize 2x1/2 x 1": "<</PageSize[144 72]/ImagingBBox null>>setpagedevice"
+*PageSize Round108/1.5" Round: "<</PageSize[108 108]/ImagingBBox null>>setpagedevice"
+*PageSize Round144/2" Round: "<</PageSize[144 144]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: 4x6
+*PageRegion 4x6/4 x 6": "<</PageRegion[288 432]/ImagingBBox null>>setpagedevice"
+*PageRegion 4x8/4 x 8": "<</PageRegion[288 576]/ImagingBBox null>>setpagedevice"
+*PageRegion 2x1/2 x 1": "<</PageRegion[144 72]/ImagingBBox null>>setpagedevice"
+*PageRegion Round108/1.5" Round: "<</PageRegion[108 108]/ImagingBBox null>>setpagedevice"
+*PageRegion Round144/2" Round: "<</PageRegion[144 144]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: 4x6
+*ImageableArea 4x6/4 x 6": "0 0 288 432"
+*ImageableArea 4x8/4 x 8": "0 0 288 576"
+*ImageableArea 2x1/2 x 1": "0 0 144 72"
+*ImageableArea Round108/1.5" Round: "0 0 108 108"
+*ImageableArea Round144/2" Round: "0 0 144 144"
+
+*DefaultPaperDimension: 4x6
+*PaperDimension 4x6/4 x 6": "288 432"
+*PaperDimension 4x8/4 x 8": "288 576"
+*PaperDimension 2x1/2 x 1": "144 72"
+*PaperDimension Round108/1.5" Round: "108 108"
+*PaperDimension Round144/2" Round: "144 144"
+
+*% Custom media support
+*MaxMediaWidth: "294"
+*MaxMediaHeight: "5670"
+*HWMargins: 0 0 0 0
+*CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width: 1 points 36 294
+*ParamCustomPageSize Height: 2 points 36 5670
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 0 0
+
+*% Print Quality
+*OpenUI *cupsPrintQuality/Print Quality: PickOne
+*OrderDependency: 10 AnySetup *cupsPrintQuality
+*DefaultcupsPrintQuality: Normal
+*cupsPrintQuality Draft/Draft: ""
+*cupsPrintQuality Normal/Normal: ""
+*cupsPrintQuality High/Best: ""
+*CloseUI: *cupsPrintQuality
+
+*% Output resolution
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 203dpi
+*Resolution 203dpi/203 dpi: "<</HWResolution[203 203]/cupsBitsPerColor 8/cupsRowCount 8/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 0>>setpagedevice"
+*CloseUI: *Resolution
+
+*OpenGroup: PrinterSettings/Printer Settings
+*% Media tracking
+*OpenUI *roMediaTracking/Media Tracking: PickOne
+*OrderDependency: 20 AnySetup *roMediaTracking
+*DefaultroMediaTracking: Gap
+*roMediaTracking Continuous/Continuous: ""
+*roMediaTracking Gap/Gap: ""
+*roMediaTracking BLine/Black Line: ""
+*CloseUI: *roMediaTracking
+
+*% Print darkness
+*OpenUI *roDarkness/Darkness: PickOne
+*OrderDependency: 20 AnySetup *roDarkness
+*DefaultroDarkness: Default
+*roDarkness Default/Printer Default: ""
+*roDarkness 0: ""
+*roDarkness 1: ""
+*roDarkness 2: ""
+*roDarkness 3: ""
+*roDarkness 4: ""
+*roDarkness 5: ""
+*roDarkness 6: ""
+*roDarkness 7: ""
+*roDarkness 8: ""
+*roDarkness 9: ""
+*roDarkness 10: ""
+*roDarkness 11: ""
+*roDarkness 12: ""
+*roDarkness 13: ""
+*roDarkness 14: ""
+*roDarkness 15: ""
+*CloseUI: *roDarkness
+
+*% Print speed
+*OpenUI *roPrintRate/Print Speed: PickOne
+*OrderDependency: 20 AnySetup *roPrintRate
+*DefaultroPrintRate: Default
+*roPrintRate Default/Printer Default: ""
+*roPrintRate 1/1 inch/sec.: ""
+*roPrintRate 2/2 inch/sec.: ""
+*roPrintRate 3/3 inch/sec.: ""
+*roPrintRate 4/4 inch/sec.: ""
+*roPrintRate 5/5 inch/sec.: ""
+*roPrintRate 6/6 inch/sec.: ""
+*roPrintRate 7/7 inch/sec.: ""
+*roPrintRate 8/8 inch/sec.: ""
+*CloseUI: *roPrintRate
+*CloseGroup: PrinterSettings
+
+*OpenGroup: PageSet/Page Options
+*% Horizontal offset
+*OpenUI *roAdjustHorizontal/Horizontal Offset: PickOne
+*OrderDependency: 130 AnySetup *roAdjustHorizontal
+*DefaultroAdjustHorizontal: 0
+*roAdjustHorizontal -20/-20mm: ""
+*roAdjustHorizontal -19/-19mm: ""
+*roAdjustHorizontal -18/-18mm: ""
+*roAdjustHorizontal -17/-17mm: ""
+*roAdjustHorizontal -16/-16mm: ""
+*roAdjustHorizontal -15/-15mm: ""
+*roAdjustHorizontal -14/-14mm: ""
+*roAdjustHorizontal -13/-13mm: ""
+*roAdjustHorizontal -12/-12mm: ""
+*roAdjustHorizontal -11/-11mm: ""
+*roAdjustHorizontal -10/-10mm: ""
+*roAdjustHorizontal -9/-9mm: ""
+*roAdjustHorizontal -8/-8mm: ""
+*roAdjustHorizontal -7/-7mm: ""
+*roAdjustHorizontal -6/-6mm: ""
+*roAdjustHorizontal -5/-5mm: ""
+*roAdjustHorizontal -4/-4mm: ""
+*roAdjustHorizontal -3/-3mm: ""
+*roAdjustHorizontal -2/-2mm: ""
+*roAdjustHorizontal -1/-1mm: ""
+*roAdjustHorizontal 0/0mm: ""
+*roAdjustHorizontal 1/1mm: ""
+*roAdjustHorizontal 2/2mm: ""
+*roAdjustHorizontal 3/3mm: ""
+*roAdjustHorizontal 4/4mm: ""
+*roAdjustHorizontal 5/5mm: ""
+*roAdjustHorizontal 6/6mm: ""
+*roAdjustHorizontal 7/7mm: ""
+*roAdjustHorizontal 8/8mm: ""
+*roAdjustHorizontal 9/9mm: ""
+*roAdjustHorizontal 10/10mm: ""
+*roAdjustHorizontal 11/11mm: ""
+*roAdjustHorizontal 12/12mm: ""
+*roAdjustHorizontal 13/13mm: ""
+*roAdjustHorizontal 14/14mm: ""
+*roAdjustHorizontal 15/15mm: ""
+*roAdjustHorizontal 16/16mm: ""
+*roAdjustHorizontal 17/17mm: ""
+*roAdjustHorizontal 18/18mm: ""
+*roAdjustHorizontal 19/19mm: ""
+*roAdjustHorizontal 20/20mm: ""
+*CloseUI: *roAdjustHorizontal
+
+*% Vertical offset
+*OpenUI *roAdjustVertical/Vertical Offset: PickOne
+*OrderDependency: 130 AnySetup *roAdjustVertical
+*DefaultroAdjustVertical: 0
+*roAdjustVertical -20/-20mm: ""
+*roAdjustVertical -19/-19mm: ""
+*roAdjustVertical -18/-18mm: ""
+*roAdjustVertical -17/-17mm: ""
+*roAdjustVertical -16/-16mm: ""
+*roAdjustVertical -15/-15mm: ""
+*roAdjustVertical -14/-14mm: ""
+*roAdjustVertical -13/-13mm: ""
+*roAdjustVertical -12/-12mm: ""
+*roAdjustVertical -11/-11mm: ""
+*roAdjustVertical -10/-10mm: ""
+*roAdjustVertical -9/-9mm: ""
+*roAdjustVertical -8/-8mm: ""
+*roAdjustVertical -7/-7mm: ""
+*roAdjustVertical -6/-6mm: ""
+*roAdjustVertical -5/-5mm: ""
+*roAdjustVertical -4/-4mm: ""
+*roAdjustVertical -3/-3mm: ""
+*roAdjustVertical -2/-2mm: ""
+*roAdjustVertical -1/-1mm: ""
+*roAdjustVertical 0/0mm: ""
+*roAdjustVertical 1/1mm: ""
+*roAdjustVertical 2/2mm: ""
+*roAdjustVertical 3/3mm: ""
+*roAdjustVertical 4/4mm: ""
+*roAdjustVertical 5/5mm: ""
+*roAdjustVertical 6/6mm: ""
+*roAdjustVertical 7/7mm: ""
+*roAdjustVertical 8/8mm: ""
+*roAdjustVertical 9/9mm: ""
+*roAdjustVertical 10/10mm: ""
+*roAdjustVertical 11/11mm: ""
+*roAdjustVertical 12/12mm: ""
+*roAdjustVertical 13/13mm: ""
+*roAdjustVertical 14/14mm: ""
+*roAdjustVertical 15/15mm: ""
+*roAdjustVertical 16/16mm: ""
+*roAdjustVertical 17/17mm: ""
+*roAdjustVertical 18/18mm: ""
+*roAdjustVertical 19/19mm: ""
+*roAdjustVertical 20/20mm: ""
+*CloseUI: *roAdjustVertical
+
+*% Label image rotation
+*OpenUI *roRotate/Rotate: PickOne
+*OrderDependency: 160 AnySetup *Rotate
+*DefaultroRotate: 0
+*roRotate 0/0: ""
+*roRotate 1/180: ""
+*roRotate 2/90: ""
+*roRotate 3/270: ""
+*CloseUI: *roRotate
+
+*OpenUI *roAutoDotted/Dotted Line: Boolean
+*OrderDependency: 160 AnySetup *roAutoDotted
+*DefaultroAutoDotted: False
+*roAutoDotted False: ""
+*roAutoDotted True: ""
+*CloseUI: *roAutoDotted
+
+*OpenUI *roFeedOffset/Feed Offset: PickOne
+*OrderDependency: 160 AnySetup *roFeedOffset
+*DefaultroFeedOffset: 0
+*roFeedOffset -20/-20mm: ""
+*roFeedOffset -19/-19mm: ""
+*roFeedOffset -18/-18mm: ""
+*roFeedOffset -17/-17mm: ""
+*roFeedOffset -16/-16mm: ""
+*roFeedOffset -15/-15mm: ""
+*roFeedOffset -14/-14mm: ""
+*roFeedOffset -13/-13mm: ""
+*roFeedOffset -12/-12mm: ""
+*roFeedOffset -11/-11mm: ""
+*roFeedOffset -10/-10mm: ""
+*roFeedOffset -9/-9mm: ""
+*roFeedOffset -8/-8mm: ""
+*roFeedOffset -7/-7mm: ""
+*roFeedOffset -6/-6mm: ""
+*roFeedOffset -5/-5mm: ""
+*roFeedOffset -4/-4mm: ""
+*roFeedOffset -3/-3mm: ""
+*roFeedOffset -2/-2mm: ""
+*roFeedOffset -1/-1mm: ""
+*roFeedOffset 0/0mm: ""
+*roFeedOffset 1/1mm: ""
+*roFeedOffset 2/2mm: ""
+*roFeedOffset 3/3mm: ""
+*roFeedOffset 4/4mm: ""
+*roFeedOffset 5/5mm: ""
+*roFeedOffset 6/6mm: ""
+*roFeedOffset 7/7mm: ""
+*roFeedOffset 8/8mm: ""
+*roFeedOffset 9/9mm: ""
+*roFeedOffset 10/10mm: ""
+*roFeedOffset 11/11mm: ""
+*roFeedOffset 12/12mm: ""
+*roFeedOffset 13/13mm: ""
+*roFeedOffset 14/14mm: ""
+*roFeedOffset 15/15mm: ""
+*roFeedOffset 16/16mm: ""
+*roFeedOffset 17/17mm: ""
+*roFeedOffset 18/18mm: ""
+*roFeedOffset 19/19mm: ""
+*roFeedOffset 20/20mm: ""
+*CloseUI: *roFeedOffset
+*CloseGroup: PageSet
+
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(1.05)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(1.05)" Standard ROM
+*Font AvantGarde-Demi: Standard "(1.05)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(1.05)" Standard ROM
+*Font Bookman-Demi: Standard "(1.05)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(1.05)" Standard ROM
+*Font Bookman-Light: Standard "(1.05)" Standard ROM
+*Font Bookman-LightItalic: Standard "(1.05)" Standard ROM
+*Font Courier: Standard "(1.05)" Standard ROM
+*Font Courier-Bold: Standard "(1.05)" Standard ROM
+*Font Courier-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Courier-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica: Standard "(1.05)" Standard ROM
+*Font Helvetica-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(1.05)" Standard ROM
+*Font Helvetica-Oblique: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(1.05)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(1.05)" Standard ROM
+*Font Palatino-Bold: Standard "(1.05)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Palatino-Italic: Standard "(1.05)" Standard ROM
+*Font Palatino-Roman: Standard "(1.05)" Standard ROM
+*Font Symbol: Special "(001.005)" Special ROM
+*Font Times-Bold: Standard "(1.05)" Standard ROM
+*Font Times-BoldItalic: Standard "(1.05)" Standard ROM
+*Font Times-Italic: Standard "(1.05)" Standard ROM
+*Font Times-Roman: Standard "(1.05)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(1.05)" Standard ROM
+*Font ZapfDingbats: Special "(001.005)" Special ROM
+*% End of PPD
