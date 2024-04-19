@@ -19,7 +19,7 @@ Packager: Rollo Support <support@rollo.com>
 Vendor: Nelu LLC
 
 # Package names are as defined for Red Hat (and clone) distributions
-BuildRequires: libcups2-dev, libcupsimage2-dev
+BuildRequires: cups-devel
 
 # Use buildroot so as not to disturb the version already installed
 BuildRoot: /tmp/%{name}-root
