@@ -17,4 +17,5 @@ done
 
 # Run dpkg-buildpackage to build the package...
 echo "Building Debian package..."
+cd debian-source
 dpkg-buildpackage -uc -us -ui 
