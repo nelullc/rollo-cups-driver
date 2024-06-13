@@ -1,6 +1,12 @@
 Changes in Rollo CUPS Printer Driver
 ====================================
 
+v1.8.4
+------
+
+- Fixed dither buffering that caused black labels (Issue #1)
+
+
 v1.8.3
 ------
 

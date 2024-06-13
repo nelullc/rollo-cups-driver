@@ -112,7 +112,7 @@ rollo_dither_alloc(
   for (i = 1; i < 4; i ++)
     dither->input[i] = dither->input[0] + i * dither->in_width;
 
-  if ((dither->output = malloc(dither->out_width)) == NULL)
+  if ((dither->output = malloc(dither->out_width * dither->in_height)) == NULL)
   {
     fprintf(stderr, "ERROR: Unable to allocate output buffer.\n");
     return (false);
@@ -249,7 +249,7 @@ rollo_dither_line(
     return (false);
 
   // Dither...
-  for (x = 0, count = dither->in_width, prev = dither->input[(y - 2) & 3], current = dither->input[(y - 1) & 3], next = dither->input[y & 3], outptr = dither->output, byte = dither->out_white, bit = 128, dline = dither->dither[y & 15]; count > 0; x ++, count --, prev ++, current ++, next ++)
+  for (x = 0, count = dither->in_width, prev = dither->input[(y - 2) & 3], current = dither->input[(y - 1) & 3], next = dither->input[y & 3], outptr = dither->output + (y - dither->in_top - 1) * dither->out_width, byte = dither->out_white, bit = 128, dline = dither->dither[y & 15]; count > 0; x ++, count --, prev ++, current ++, next ++)
   {
     if (*current)
     {
