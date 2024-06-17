@@ -13,7 +13,7 @@ AC_PREREQ(2.60)
 
 
 dnl Package name and version...
-AC_INIT([rollo-driver], [1.8.3], [https://support.rollo.com/support/home], [rollo-driver], [https://support.rollo.com/support/home])
+AC_INIT([rollo-driver], [1.8.4], [https://support.rollo.com/support/home], [rollo-driver], [https://support.rollo.com/support/home])
 
 ROLLO_VERSION="AC_PACKAGE_VERSION"
 AC_SUBST([ROLLO_VERSION])

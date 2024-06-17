@@ -9,7 +9,7 @@
 
 Summary: Rollo CUPS Driver
 Name: rollo-cups-driver
-Version: 1.8.3
+Version: 1.8.4
 Release: 0
 License: GPLv3
 Group: System Environment/Drivers
@@ -50,6 +50,10 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/cups/model/*
 
 %changelog
+
+* Mon June 17 2024 Michael Sweet <msweet@lakesiderobotics.ca>
+
+- Fixed dither buffering that caused black labels (Issue #1)
 
 * Fri Apr 19 2024 Michael Sweet <msweet@lakesiderobotics.ca>
 
