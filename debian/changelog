@@ -1,5 +1,5 @@
-rollo-cups-driver (1.8.3-1) UNRELEASED; urgency=medium
+rollo-cups-driver (1.8.4-1) UNRELEASED; urgency=medium
 
-  * Initial release.
+  * Fixed dither buffering that caused black labels (Issue #1)
 
- -- Michael Sweet <msweet@lakesiderobotics.ca>  Fri, 19 Apr 2024 15:32:41 -0400
+ -- Michael Sweet <msweet@lakesiderobotics.ca>  Mon, 17 Jun 2024 13:40:00 -0400
