@@ -27,7 +27,7 @@ if test "$(grep AC_INIT configure.ac | awk '{print $2}')" != "[$version],"; then
     exit 1
 fi
 
-if test "$(grep PACKAGE_VERSION configure)" != "PACKAGE_VERSION='$version'"; then
+if test "$(grep PACKAGE_VERSION= configure)" != "PACKAGE_VERSION='$version'"; then
     echo "Need to update configure script with 'autoconf -f'."
     exit 1
 fi
