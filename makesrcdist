@@ -17,6 +17,23 @@ fi
 
 version=$1
 
+if test "$(head -4 CHANGES.md | tail -1)" != "v$version"; then
+    echo "Need to update CHANGES.md for v$version."
+    exit 1
+fi
+
+if test "$(grep AC_INIT configure.ac | awk '{print $2}')" != "[$version],"; then
+    echo "Need to update AC_INIT in configure.ac for $version."
+fi
+
+if test "$(grep PACKAGE_VERSION configure)" != "PACKAGE_VERSION='$version'"; then
+    echo "Need to update configure script with 'autoconf -f'."
+fi
+
+if test "$(grep Version: rollo-cups-driver.spec)" != "Version: $version"; then
+    echo "Need to update Version: in rollo-cups-driver.spec for $version."
+fi
+
 if test $snapshot = 0; then
     echo Creating tag for release...
     git tag -m "Tag $version" v$version
